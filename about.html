@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Learn about SMART-PAVE Rwanda, an engineering technology initiative for intelligent pavement monitoring, analysis and geospatial decision support.">
+<title>About | SMART-PAVE Rwanda</title>
+
+<style>
+:root {
+    --bg:#07111f;
+    --panel:#101e30;
+    --panel2:#14263a;
+    --text:#edf5ff;
+    --muted:#a8b8ca;
+    --cyan:#35d5e8;
+    --blue:#478bff;
+    --line:rgba(255,255,255,.11);
+}
+* {box-sizing:border-box;margin:0;padding:0}
+html {scroll-behavior:smooth}
+body {
+    background:var(--bg);
+    color:var(--text);
+    font-family:Inter,"Segoe UI",Arial,sans-serif;
+    line-height:1.7;
+}
+a {color:inherit;text-decoration:none}
+.container {width:min(1160px,90%);margin:auto}
+header {
+    position:sticky;top:0;z-index:10;
+    background:rgba(7,17,31,.94);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+}
+.nav {
+    min-height:76px;display:flex;align-items:center;
+    justify-content:space-between;gap:24px;
+}
+.brand {font-size:21px;font-weight:850;letter-spacing:1px}
+.brand span {color:var(--cyan)}
+nav {display:flex;gap:27px;flex-wrap:wrap}
+nav a {font-size:14px;color:var(--muted);font-weight:600}
+nav a:hover,nav a.active {color:var(--cyan)}
+.hero {
+    padding:105px 0 90px;
+    background:
+      radial-gradient(ellipse at 75% 20%,rgba(53,213,232,.13),transparent 42%),
+      linear-gradient(135deg,#0b1c30,#07111f 65%);
+    border-bottom:1px solid var(--line);
+}
+.eyebrow {
+    color:var(--cyan);font-size:12px;font-weight:800;
+    letter-spacing:2px;text-transform:uppercase;margin-bottom:17px;
+}
+h1 {font-size:clamp(38px,6vw,66px);line-height:1.1;max-width:850px}
+h1 span {color:var(--cyan)}
+.hero p {max-width:760px;color:var(--muted);font-size:18px;margin-top:25px}
+.hero-actions {display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+.btn {
+    display:inline-block;padding:12px 21px;border-radius:9px;
+    background:var(--cyan);color:#061522;font-weight:800;
+}
+.btn.secondary {background:transparent;color:var(--text);border:1px solid var(--line)}
+section {padding:82px 0}
+.section-heading {max-width:760px;margin-bottom:38px}
+h2 {font-size:clamp(28px,4vw,42px);line-height:1.2;margin-bottom:17px}
+.section-heading p,.body-copy {color:var(--muted)}
+.grid {display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.card {
+    background:linear-gradient(145deg,var(--panel),var(--panel2));
+    border:1px solid var(--line);border-radius:16px;padding:28px;
+}
+.card h3 {font-size:20px;margin-bottom:12px}
+.card p {color:var(--muted)}
+.card .number {font-size:13px;color:var(--cyan);font-weight:800;letter-spacing:1px;margin-bottom:13px}
+.split {display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:start}
+.dark-section {background:#0a1727;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.pillars {display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.pillar {
+    padding:24px;background:var(--panel);
+    border:1px solid var(--line);border-radius:14px;
+}
+.pillar h3 {font-size:18px;margin-bottom:9px}
+.pillar p {color:var(--muted);font-size:14px}
+.status {
+    border-left:3px solid var(--cyan);
+    padding:22px 25px;background:var(--panel);border-radius:0 12px 12px 0;
+}
+.status p {color:var(--muted);margin-top:9px}
+footer {padding:30px 0;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+.footer-row {display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+@media(max-width:760px) {
+    .nav {padding:15px 0;align-items:flex-start;flex-direction:column}
+    nav {gap:15px}
+    .hero {padding:75px 0}
+    .grid,.split,.pillars {grid-template-columns:1fr}
+    section {padding:60px 0}
+}
+@media(prefers-reduced-motion:reduce) {
+    html {scroll-behavior:auto}
+}
+</style>
+</head>
+
+<body>
+<header>
+    <div class="container nav">
+        <a class="brand" href="index.html">SMART<span>-PAVE</span> RWANDA</a>
+        <nav aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="about.html" class="active">About</a>
+            <a href="technology.html">Technology</a>
+            <a href="index.html#platform">Platform</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+<section class="hero">
+    <div class="container">
+        <div class="eyebrow">About SMART-PAVE Rwanda</div>
+        <h1>Engineering smarter roads through <span>pavement intelligence.</span></h1>
+        <p>
+            SMART-PAVE Rwanda is an engineering technology initiative
+            developing an integrated digital approach to traffic monitoring,
+            pavement response analysis and geospatial decision support.
+            Its goal is to turn road-related data into useful engineering insight.
+        </p>
+        <div class="hero-actions">
+            <a class="btn" href="technology.html">Explore the Technology</a>
+            <a class="btn secondary" href="platform.html">Engineering Workspace</a>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container split">
+        <div>
+            <div class="eyebrow">The challenge</div>
+            <h2>Understanding what happens beneath the road surface.</h2>
+        </div>
+        <div class="body-copy">
+            <p>
+                Roads are continuously exposed to vehicle loading and
+                environmental conditions. Their performance depends on
+                traffic characteristics, pavement structure, material
+                properties and the behaviour of underlying layers.
+            </p>
+            <br>
+            <p>
+                Understanding these interacting factors requires organised
+                engineering data. SMART-PAVE is being developed to bring
+                traffic information, pavement response indicators and
+                geospatial context together in one digital environment.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="dark-section">
+    <div class="container">
+        <div class="section-heading">
+            <div class="eyebrow">Our direction</div>
+            <h2>Vision and mission</h2>
+            <p>Building an engineering-led foundation for more informed
+            pavement monitoring and infrastructure decisions.</p>
+        </div>
+        <div class="grid">
+            <article class="card">
+                <div class="number">01 / VISION</div>
+                <h3>Intelligent road infrastructure</h3>
+                <p>
+                    To contribute to a future where pavement performance
+                    can be better understood through connected data,
+                    engineering analysis and geospatial intelligence.
+                </p>
+            </article>
+            <article class="card">
+                <div class="number">02 / MISSION</div>
+                <h3>Connect data with engineering</h3>
+                <p>
+                    To develop practical digital tools that organise traffic
+                    and pavement information, analyse relevant engineering
+                    indicators and support investigation, monitoring and planning.
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="section-heading">
+            <div class="eyebrow">Engineering foundation</div>
+            <h2>Built around pavement engineering principles.</h2>
+            <p>
+                SMART-PAVE brings together several connected areas of
+                highway and pavement engineering.
+            </p>
+        </div>
+        <div class="pillars">
+            <article class="pillar">
+                <h3>Traffic intelligence</h3>
+                <p>Vehicle passages, traffic volume, classification,
+                AADT and equivalent standard axle loading.</p>
+            </article>
+            <article class="pillar">
+                <h3>Pavement response</h3>
+                <p>Multilayer pavement analysis and the study of
+                stresses, strains and deflection under loading.</p>
+            </article>
+            <article class="pillar">
+                <h3>Deformation monitoring</h3>
+                <p>Exploration of elastic deflection, residual deformation,
+                settlement and changes over time.</p>
+            </article>
+            <article class="pillar">
+                <h3>Geospatial intelligence</h3>
+                <p>Road sections, chainage, geographic coordinates
+                and location-based engineering information.</p>
+            </article>
+            <article class="pillar">
+                <h3>Data integration</h3>
+                <p>A digital architecture intended to connect
+                measurements, engineering analysis and visualisation.</p>
+            </article>
+            <article class="pillar">
+                <h3>Decision support</h3>
+                <p>Presenting engineering indicators to help identify
+                areas that may require further investigation.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="dark-section">
+    <div class="container split">
+        <div>
+            <div class="eyebrow">Research and development</div>
+            <h2>Developing the concept step by step.</h2>
+        </div>
+        <div class="body-copy">
+            <p>
+                The current development focuses on a software-based
+                engineering prototype, including data management,
+                traffic analysis, pavement response calculations,
+                deformation-history exploration and dashboard visualisation.
+            </p>
+            <br>
+            <p>
+                Simulated measurements are used to demonstrate and test
+                selected analytical workflows. The project is intended
+                to progress towards sensor integration, controlled
+                experiments and field validation.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="section-heading">
+            <div class="eyebrow">Engineering integrity</div>
+            <h2>Evidence before engineering claims.</h2>
+        </div>
+        <div class="status">
+            <h3>Prototype development status</h3>
+            <p>
+                SMART-PAVE is a developing prototype, not yet a fully
+                field-validated pavement monitoring system. Simulated
+                outputs, provisional engineering factors and analytical
+                model results must be distinguished from verified field
+                measurements. Sensor calibration, model validation and
+                engineering review are necessary before operational
+                or design-use claims can be made.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="dark-section">
+    <div class="container">
+        <div class="section-heading">
+            <div class="eyebrow">Explore SMART-PAVE</div>
+            <h2>From engineering concept to digital platform.</h2>
+            <p>
+                Explore the technology behind the project or access
+                the current engineering workspace.
+            </p>
+        </div>
+        <div class="hero-actions">
+            <a class="btn" href="technology.html">Explore Technology</a>
+            <a class="btn secondary" href="platform.html">Open Engineering Workspace</a>
+        </div>
+    </div>
+</section>
+</main>
+
+<footer>
+    <div class="container footer-row">
+        <span>© 2026 SMART-PAVE Rwanda. Engineering technology initiative.</span>
+        <span>Intelligent pavement monitoring and analysis.</span>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Explore SMART-PAVE Rwanda's intelligent pavement monitoring technology, traffic analysis, multilayer pavement response, deformation monitoring and GIS intelligence.">
+<meta name="theme-color" content="#07111f">
+<title>Technology | SMART-PAVE Rwanda</title>
+<style>
+:root {
+    --bg:#07111f; --panel:#101e30; --panel2:#14263a;
+    --text:#edf5ff; --muted:#a8b8ca; --cyan:#35d5e8;
+    --blue:#478bff; --line:rgba(255,255,255,.11);
+}
+* {box-sizing:border-box;margin:0;padding:0}
+html {scroll-behavior:smooth}
+body {font-family:Inter,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+a {color:inherit;text-decoration:none}
+.container {width:min(1160px,90%);margin:auto}
+header {position:sticky;top:0;z-index:20;background:rgba(7,17,31,.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.navbar {min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+.brand {font-weight:850;font-size:1.1rem;letter-spacing:.7px}
+.brand span {color:var(--cyan)}
+.nav-links {display:flex;gap:24px;color:var(--muted);font-size:.9rem}
+.nav-links a:hover {color:var(--cyan)}
+.btn {display:inline-flex;align-items:center;justify-content:center;padding:11px 19px;border-radius:7px;background:linear-gradient(110deg,var(--cyan),var(--blue));color:#06111f;font-weight:800;transition:.2s}
+.btn:hover {transform:translateY(-2px);opacity:.9}
+.btn.secondary {background:transparent;border:1px solid rgba(53,213,232,.55);color:var(--text)}
+.hero {padding:100px 0 80px;background:radial-gradient(ellipse at 80% 20%,rgba(53,213,232,.15),transparent 38%),radial-gradient(ellipse at 10% 90%,rgba(71,139,255,.13),transparent 40%)}
+.hero-grid {display:grid;grid-template-columns:1.1fr .9fr;gap:55px;align-items:center}
+.eyebrow {color:var(--cyan);text-transform:uppercase;letter-spacing:2px;font-size:.75rem;font-weight:800;margin-bottom:17px}
+h1 {font-size:clamp(2.5rem,5vw,4.5rem);line-height:1.08;letter-spacing:-1.8px;margin-bottom:23px}
+h1 span {background:linear-gradient(100deg,var(--cyan),#8bbaff);background-clip:text;color:transparent}
+.lead {font-size:1.08rem;color:var(--muted);max-width:650px}
+.actions {display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}
+.hero-panel {background:linear-gradient(145deg,rgba(20,38,58,.95),rgba(12,27,44,.92));border:1px solid var(--line);border-radius:18px;padding:28px;box-shadow:0 25px 70px rgba(0,0,0,.25)}
+.panel-label {font-size:.75rem;color:var(--cyan);letter-spacing:1.5px;text-transform:uppercase;font-weight:800;margin-bottom:18px}
+.flow {display:grid;gap:10px}
+.flow-item {padding:13px 15px;border:1px solid rgba(53,213,232,.22);border-radius:9px;background:rgba(53,213,232,.055);display:flex;align-items:center;gap:12px;font-weight:700}
+.flow-item small {display:block;color:var(--muted);font-weight:400;font-size:.78rem}
+.flow-icon {width:34px;height:34px;border-radius:9px;background:rgba(53,213,232,.12);display:grid;place-items:center;color:var(--cyan);flex-shrink:0}
+.flow-arrow {text-align:center;color:var(--cyan);line-height:1;font-size:1.25rem}
+section {padding:82px 0}
+.section-head {max-width:740px;margin-bottom:38px}
+.section-head h2 {font-size:clamp(1.8rem,3vw,2.65rem);line-height:1.2;margin-bottom:14px}
+.section-head p {color:var(--muted)}
+.overview {background:linear-gradient(180deg,rgba(16,30,48,.45),transparent)}
+.grid {display:grid;grid-template-columns:repeat(3,1fr);gap:19px}
+.card {background:linear-gradient(145deg,var(--panel),#0c1929);border:1px solid var(--line);border-radius:14px;padding:25px;transition:transform .22s,border-color .22s,box-shadow .22s}
+.card:hover {transform:translateY(-5px);border-color:rgba(53,213,232,.4);box-shadow:0 15px 35px rgba(0,0,0,.2)}
+.card-number {color:var(--cyan);font-size:.76rem;font-weight:850;letter-spacing:1.4px;margin-bottom:17px}
+.card h3 {font-size:1.16rem;margin-bottom:11px}
+.card p {color:var(--muted);font-size:.91rem}
+.tag {display:inline-block;margin-top:17px;padding:5px 9px;border-radius:5px;background:rgba(53,213,232,.09);color:var(--cyan);font-size:.72rem;font-weight:750}
+.detail {border-top:1px solid var(--line)}
+.detail-grid {display:grid;grid-template-columns:.75fr 1.25fr;gap:55px;align-items:start}
+.detail h2 {font-size:2rem;line-height:1.2;margin-bottom:16px}
+.detail p {color:var(--muted);margin-bottom:14px}
+.detail-list {display:grid;gap:12px}
+.detail-row {padding:16px 18px;border:1px solid var(--line);border-radius:10px;background:rgba(16,30,48,.72)}
+.detail-row strong {display:block;margin-bottom:3px}
+.detail-row span {color:var(--muted);font-size:.88rem}
+.equation {padding:18px;border-radius:10px;border:1px solid rgba(53,213,232,.25);background:rgba(53,213,232,.055);color:#dffaff;font-family:Georgia,serif;font-size:1.08rem;margin:18px 0}
+.notice {padding:20px 22px;border:1px solid rgba(255,190,90,.28);border-left:4px solid #eab45c;border-radius:9px;background:rgba(234,180,92,.055);color:#e9d9bd;font-size:.9rem}
+.cta {text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(53,213,232,.12),transparent 55%)}
+.cta h2 {font-size:clamp(1.8rem,3vw,2.7rem);margin-bottom:13px}
+.cta p {color:var(--muted);max-width:650px;margin:0 auto}
+footer {padding:28px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+.footer-inner {display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+footer strong {color:var(--text)}
+@media(max-width:850px) {
+ .hero-grid,.detail-grid {grid-template-columns:1fr;gap:30px}
+ .grid {grid-template-columns:repeat(2,1fr)}
+ .hero {padding:75px 0 60px}
+}
+@media(max-width:600px) {
+ .navbar {padding:14px 0;flex-wrap:wrap}
+ .nav-links {order:3;width:100%;justify-content:space-between;gap:10px;font-size:.82rem}
+ .nav-cta {font-size:.8rem;padding:9px 12px}
+ .grid {grid-template-columns:1fr}
+ section {padding:62px 0}
+ .hero-panel {padding:20px}
+}
+@media(prefers-reduced-motion:reduce) {
+ html {scroll-behavior:auto}
+ *,*::before,*::after {transition:none!important}
+}
+</style>
+</head>
+<body>
+<header>
+ <div class="container navbar">
+  <a class="brand" href="index.html">SMART-PAVE <span>RWANDA</span></a>
+  <nav class="nav-links" aria-label="Main navigation">
+   <a href="index.html">Home</a>
+   <a href="index.html#about">About</a>
+   <a href="technology.html">Technology</a>
+   <a href="platform.html">Platform</a>
+  </nav>
+  <a class="btn nav-cta" href="platform.html">Engineering Workspace ↗</a>
+ </div>
+</header>
+
+<main>
+<section class="hero">
+ <div class="container hero-grid">
+  <div>
+   <div class="eyebrow">SMART-PAVE technology framework</div>
+   <h1>From road traffic to <span>pavement intelligence.</span></h1>
+   <p class="lead">An integrated engineering approach to monitoring traffic activity, evaluating flexible pavement response, tracking deformation and translating road data into useful infrastructure insights.</p>
+   <div class="actions">
+    <a class="btn" href="platform.html">Explore Engineering Workspace ↗</a>
+    <a class="btn secondary" href="#architecture">Explore the architecture</a>
+   </div>
+  </div>
+  <div class="hero-panel">
+   <div class="panel-label">Conceptual system workflow</div>
+   <div class="flow">
+    <div class="flow-item"><div class="flow-icon">01</div><div>Traffic and vehicle data<small>Vehicle passage, classification and loading</small></div></div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-item"><div class="flow-icon">02</div><div>Data acquisition and integration<small>Sensors, simulated inputs and APIs</small></div></div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-item"><div class="flow-icon">03</div><div>Engineering analysis<small>Traffic loading and pavement response</small></div></div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-item"><div class="flow-icon">04</div><div>GIS and decision support<small>Road sections, trends and engineering insights</small></div></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="overview" id="architecture">
+ <div class="container">
+  <div class="section-head">
+   <div class="eyebrow">Integrated engineering modules</div>
+   <h2>Six connected technology capabilities.</h2>
+   <p>SMART-PAVE is being developed as a modular platform. Each capability contributes a different part of the pavement monitoring and analysis workflow.</p>
+  </div>
+  <div class="grid">
+   <article class="card"><div class="card-number">MODULE 01</div><h3>Traffic and vehicle monitoring</h3><p>Capture vehicle passage events, timestamps, road-section references and available vehicle information. The platform is designed to support simulated inputs and future sensor integration.</p><span class="tag">Traffic data acquisition</span></article>
+   <article class="card"><div class="card-number">MODULE 02</div><h3>Traffic volume and classification</h3><p>Organise vehicle observations by class and time period to support traffic counts, hourly or daily summaries and Average Annual Daily Traffic analysis when sufficient representative data is available.</p><span class="tag">AADT · Vehicle classes</span></article>
+   <article class="card"><div class="card-number">MODULE 03</div><h3>Equivalent axle loading</h3><p>Translate eligible vehicle passages into equivalent standard axle loading estimates using documented vehicle-class factors and selected loading assumptions.</p><span class="tag">ESAL · Cumulative loading</span></article>
+   <article class="card"><div class="card-number">MODULE 04</div><h3>Multilayer pavement response</h3><p>Explore the response of a flexible pavement represented by asphalt, granular base, subbase and subgrade layers under defined tyre or axle loading conditions.</p><span class="tag">Layered elastic analysis</span></article>
+   <article class="card"><div class="card-number">MODULE 05</div><h3>Deflection and deformation</h3><p>Organise elastic deflection, residual deformation and settlement observations over time, with the aim of supporting pavement response assessment and future condition-trend analysis.</p><span class="tag">Pavement response monitoring</span></article>
+   <article class="card"><div class="card-number">MODULE 06</div><h3>GIS and engineering intelligence</h3><p>Associate observations with road sections, chainage and geographic coordinates to support spatial visualisation, location-based review, alerts and engineering decisions.</p><span class="tag">GIS · Decision support</span></article>
+  </div>
+ </div>
+</section>
+
+<section class="detail" id="traffic">
+ <div class="container detail-grid">
+  <div><div class="eyebrow">01 / Traffic intelligence</div><h2>Understand the traffic using the road.</h2><p>Traffic observations provide the operational context for pavement assessment. SMART-PAVE is designed to organise vehicle passage records and connect traffic activity to specific road sections.</p></div>
+  <div class="detail-list">
+   <div class="detail-row"><strong>Vehicle passage records</strong><span>Timestamp, vehicle class, source and road-section association.</span></div>
+   <div class="detail-row"><strong>Traffic volume indicators</strong><span>Counts and time-based summaries. AADT requires representative survey coverage and appropriate expansion methods.</span></div>
+   <div class="detail-row"><strong>Equivalent standard axle loading</strong><span>ESAL estimates based on selected class factors and loading assumptions, subject to engineering review.</span></div>
+  </div>
+ </div>
+</section>
+
+<section class="detail" id="pavement-response">
+ <div class="container detail-grid">
+  <div><div class="eyebrow">02 / Pavement mechanics</div><h2>Explore the response of flexible pavement layers.</h2><p>The multilayer analysis capability represents a pavement as a system of material layers with defined thicknesses and elastic properties. A load is applied and the resulting response is evaluated under the model assumptions.</p><div class="equation">Layer properties: thickness · elastic modulus · Poisson's ratio</div></div>
+  <div class="detail-list">
+   <div class="detail-row"><strong>Asphalt layer</strong><span>Surface layer represented by its thickness and assumed material properties.</span></div>
+   <div class="detail-row"><strong>Granular base and subbase</strong><span>Structural support layers represented through their elastic properties and thicknesses.</span></div>
+   <div class="detail-row"><strong>Subgrade</strong><span>Foundation layer influencing the response of the pavement structure.</span></div>
+   <div class="detail-row"><strong>Load-response evaluation</strong><span>Explore calculated response for defined axle or tyre loading scenarios.</span></div>
+  </div>
+ </div>
+</section>
+
+<section class="detail" id="deformation">
+ <div class="container detail-grid">
+  <div><div class="eyebrow">03 / Pavement condition</div><h2>Track pavement response over time.</h2><p>SMART-PAVE includes a data structure for recording different pavement measurement types. Keeping these measurements distinct is essential for meaningful engineering interpretation.</p></div>
+  <div class="detail-list">
+   <div class="detail-row"><strong>Elastic deflection</strong><span>Recoverable vertical pavement movement under an applied load, recorded in millimetres.</span></div>
+   <div class="detail-row"><strong>Residual deformation</strong><span>Permanent deformation remaining after the applied load is removed.</span></div>
+   <div class="detail-row"><strong>Settlement</strong><span>Vertical movement of the pavement or supporting ground relative to a defined reference.</span></div>
+   <div class="detail-row"><strong>Trend analysis</strong><span>Compare compatible measurements by location, measurement type, loading and source before interpreting changes over time.</span></div>
+  </div>
+ </div>
+</section>
+
+<section class="detail" id="gis">
+ <div class="container detail-grid">
+  <div><div class="eyebrow">04 / Spatial intelligence</div><h2>Connect engineering observations to location.</h2><p>Spatial context helps engineers understand where traffic events and pavement measurements occur. SMART-PAVE is designed to associate records with road sections, chainage and geographic coordinates.</p></div>
+  <div class="detail-list">
+   <div class="detail-row"><strong>Road-section mapping</strong><span>Organise monitored locations into identifiable road sections.</span></div>
+   <div class="detail-row"><strong>Chainage referencing</strong><span>Relate observations to positions along a road alignment.</span></div>
+   <div class="detail-row"><strong>Location intelligence</strong><span>Review events, measurement histories and potential areas requiring engineering investigation.</span></div>
+  </div>
+ </div>
+</section>
+
+<section class="detail" id="decision-support">
+ <div class="container detail-grid">
+  <div><div class="eyebrow">05 / Engineering decisions</div><h2>Turn organised data into useful engineering insights.</h2><p>The platform brings together traffic, pavement response and location information to support review and prioritisation. It is intended to assist engineering judgement, not replace professional assessment.</p></div>
+  <div class="detail-list">
+   <div class="detail-row"><strong>Monitoring indicators</strong><span>Present available observations, status indicators and data-quality information.</span></div>
+   <div class="detail-row"><strong>Historical comparison</strong><span>Review changes in traffic and pavement measurements over defined periods.</span></div>
+   <div class="detail-row"><strong>Engineering review</strong><span>Identify records and locations that may require further inspection or field investigation.</span></div>
+  </div>
+ </div>
+</section>
+
+<section>
+ <div class="container">
+  <div class="notice"><strong>Engineering and validation note:</strong> SMART-PAVE is an evolving prototype. Simulated data, provisional traffic factors and model-based calculations must be clearly distinguished from sensor measurements and validated field results. Engineering outputs require suitable calibration, representative data, documented assumptions and review by qualified professionals before use in design or maintenance decisions.</div>
+ </div>
+</section>
+
+<section class="cta" id="workspace">
+ <div class="container">
+  <div class="eyebrow">Explore the platform</div>
+  <h2>See the engineering workspace.</h2>
+  <p>Explore the current SMART-PAVE prototype dashboard and its developing traffic, pavement response, deformation and GIS capabilities.</p>
+  <div class="actions" style="justify-content:center">
+   <a class="btn" href="platform.html">Open Engineering Workspace ↗</a>
+   <a class="btn secondary" href="technology.html">API Documentation</a>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer><div class="container footer-inner"><span><strong>SMART-PAVE RWANDA</strong> · Intelligent Pavement Monitoring</span><span>Engineering innovation for smarter road infrastructure.</span></div></footer>
+</body>
+</html>
+

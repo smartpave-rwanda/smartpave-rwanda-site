@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SMART-PAVE Rwanda is a smart pavement monitoring and analysis platform integrating traffic, pavement response, deformation analysis and geospatial intelligence.">
+    <meta name="theme-color" content="#07111f">
+    <title>SMART-PAVE Rwanda | Intelligent Pavement Monitoring</title>
+
+    <style>
+        :root {
+            --bg: #07111f;
+            --panel: #101e30;
+            --panel2: #14263a;
+            --text: #edf5ff;
+            --muted: #a8b8ca;
+            --cyan: #35d5e8;
+            --blue: #478bff;
+            --line: rgba(255,255,255,.11);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: Inter, "Segoe UI", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.65;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        .container {
+            width: min(1160px, 90%);
+            margin: auto;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(7,17,31,.94);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .navbar {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .brand {
+            font-size: 1.12rem;
+            font-weight: 800;
+            letter-spacing: .7px;
+        }
+
+        .brand span { color: var(--cyan); }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            color: var(--muted);
+            font-size: .91rem;
+        }
+
+        .nav-links a:hover { color: var(--cyan); }
+
+        .nav-cta, .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 11px 19px;
+            border-radius: 7px;
+            background: linear-gradient(110deg, var(--cyan), var(--blue));
+            color: #06111f;
+            font-weight: 750;
+            transition: transform .2s, opacity .2s;
+        }
+
+        .btn:hover, .nav-cta:hover {
+            transform: translateY(-2px);
+            opacity: .9;
+        }
+
+        .btn.secondary {
+            background: transparent;
+            border: 1px solid rgba(53,213,232,.6);
+            color: var(--text);
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: 112px 0 100px;
+            background:
+                radial-gradient(ellipse at 80% 20%, rgba(53,213,232,.15), transparent 38%),
+                radial-gradient(ellipse at 15% 80%, rgba(71,139,255,.13), transparent 35%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr .85fr;
+            align-items: center;
+            gap: 55px;
+        }
+
+        .eyebrow {
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: .76rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(2.6rem, 5.5vw, 4.6rem);
+            line-height: 1.08;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+        }
+
+        h1 span {
+            color: var(--cyan);
+        }
+
+        .hero p {
+            max-width: 650px;
+            color: var(--muted);
+            font-size: 1.08rem;
+            margin-bottom: 30px;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 13px;
+        }
+
+        .hero-visual {
+            min-height: 330px;
+            border: 1px solid rgba(53,213,232,.24);
+            border-radius: 18px;
+            background:
+                linear-gradient(145deg, rgba(20,38,58,.96), rgba(8,20,34,.96));
+            padding: 28px;
+            box-shadow: 0 25px 70px rgba(0,0,0,.25);
+        }
+
+        .visual-label {
+            color: var(--muted);
+            font-size: .78rem;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .road-visual {
+            height: 150px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 9px;
+            background: #27384a;
+            transform: perspective(400px) rotateX(12deg);
+        }
+
+        .road-visual:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            border-left: 3px dashed #d9e1e9;
+        }
+
+        .road-visual:after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent 0 48%,
+                rgba(255,255,255,.04) 48% 52%,
+                transparent 52% 100%
+            );
+        }
+
+        .signal-row {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .signal {
+            background: rgba(255,255,255,.045);
+            padding: 13px;
+            border-radius: 8px;
+        }
+
+        .signal strong {
+            display: block;
+            color: var(--cyan);
+            font-size: 1rem;
+        }
+
+        .signal small { color: var(--muted); }
+
+        section { padding: 85px 0; }
+
+        .section-heading {
+            max-width: 720px;
+            margin-bottom: 38px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(1.9rem, 3vw, 2.7rem);
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .section-heading p { color: var(--muted); }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 18px;
+        }
+
+        .feature {
+            padding: 25px;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            background: var(--panel);
+        }
+
+        .feature .number {
+            color: var(--cyan);
+            font-weight: 800;
+            font-size: .8rem;
+            letter-spacing: 1px;
+        }
+
+        .feature h3 {
+            font-size: 1.15rem;
+            margin: 13px 0 9px;
+        }
+
+        .feature p {
+            color: var(--muted);
+            font-size: .94rem;
+        }
+
+        .about {
+            background: #0b1929;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 55px;
+            align-items: center;
+        }
+
+        .about-copy p {
+            color: var(--muted);
+            margin-top: 15px;
+        }
+
+        .principles {
+            display: grid;
+            gap: 13px;
+        }
+
+        .principle {
+            padding: 17px 19px;
+            background: var(--panel);
+            border-left: 3px solid var(--cyan);
+            border-radius: 5px;
+        }
+
+        .principle strong { display: block; }
+        .principle small { color: var(--muted); }
+
+        .technology { background: var(--bg); }
+
+        .technology .feature {
+            min-height: 190px;
+        }
+
+        .platform {
+            text-align: center;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(53,213,232,.12), transparent 60%),
+                #0b1929;
+            border-top: 1px solid var(--line);
+        }
+
+        .platform p {
+            color: var(--muted);
+            max-width: 680px;
+            margin: 15px auto 27px;
+        }
+
+        .notice {
+            margin-top: 24px;
+            color: #9fb0c2;
+            font-size: .82rem;
+        }
+
+        footer {
+            padding: 28px 0;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: .86rem;
+        }
+
+        .footer-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 850px) {
+            .hero-grid, .about-grid { grid-template-columns: 1fr; }
+            .features { grid-template-columns: repeat(2,1fr); }
+            .hero { padding: 75px 0; }
+        }
+
+        @media (max-width: 600px) {
+            .navbar { align-items: flex-start; flex-direction: column; padding: 15px 0; }
+            .nav-links { width: 100%; overflow-x: auto; padding-bottom: 5px; gap: 19px; }
+            .nav-cta { display: none; }
+            .features { grid-template-columns: 1fr; }
+            section { padding: 65px 0; }
+            .hero-visual { min-height: 280px; }
+            h1 { letter-spacing: -1px; }
+        }
+    
+/* SMART-PAVE PROFESSIONAL DESIGN UPGRADE */
+
+:root {
+    --bg: #06101d;
+    --panel: #0e1d30;
+    --panel2: #142941;
+    --text: #f2f7ff;
+    --muted: #a9bbcf;
+    --cyan: #40e0e8;
+    --blue: #4c8dff;
+    --line: rgba(151, 190, 220, .16);
+}
+
+body {
+    background:
+        radial-gradient(ellipse at 15% 5%, rgba(38, 112, 170, .10), transparent 35%),
+        var(--bg);
+    letter-spacing: .1px;
+}
+
+.container {
+    width: min(1200px, 90%);
+}
+
+header {
+    background: rgba(5, 15, 28, .91);
+    border-bottom: 1px solid rgba(64, 224, 232, .17);
+}
+
+.brand {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.brand span {
+    color: var(--cyan);
+}
+
+.nav-links a {
+    position: relative;
+    transition: color .2s ease;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 0;
+    height: 2px;
+    background: var(--cyan);
+    transition: width .2s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-cta, .btn {
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(53, 155, 220, .13);
+}
+
+.btn:hover, .nav-cta:hover {
+    box-shadow: 0 12px 30px rgba(53, 213, 232, .2);
+}
+
+.hero {
+    min-height: 590px;
+    display: flex;
+    align-items: center;
+    background:
+        radial-gradient(ellipse at 78% 30%, rgba(53, 213, 232, .17), transparent 36%),
+        radial-gradient(ellipse at 5% 90%, rgba(71, 139, 255, .15), transparent 42%),
+        linear-gradient(135deg, #07111f 0%, #0a1b2e 55%, #071321 100%);
+}
+
+.hero-grid {
+    gap: 65px;
+}
+
+.eyebrow {
+    display: inline-block;
+    padding: 7px 12px;
+    border: 1px solid rgba(64, 224, 232, .23);
+    border-radius: 30px;
+    background: rgba(53, 213, 232, .055);
+    letter-spacing: 1.7px;
+}
+
+h1 {
+    font-weight: 850;
+    letter-spacing: -2.5px;
+}
+
+h1 span {
+    background: linear-gradient(100deg, #48e3e9, #65a4ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    line-height: 1.85;
+}
+
+.hero-visual {
+    position: relative;
+    border: 1px solid rgba(64, 224, 232, .28);
+    background:
+        linear-gradient(145deg, rgba(20, 43, 65, .97), rgba(6, 19, 34, .98));
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, .38),
+        inset 0 1px 0 rgba(255, 255, 255, .06);
+}
+
+.hero-visual::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 12%;
+    width: 76%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+}
+
+.visual-label {
+    letter-spacing: 1.5px;
+    font-weight: 750;
+}
+
+.road-visual {
+    height: 165px;
+    border: 1px solid rgba(255, 255, 255, .12);
+    background:
+        linear-gradient(90deg, transparent 49.5%, rgba(255,255,255,.08) 50%, transparent 50.5%),
+        repeating-linear-gradient(0deg, #26384b 0 13px, #2c4055 13px 26px);
+    box-shadow: inset 0 0 35px rgba(0, 0, 0, .3);
+}
+
+.road-visual::before {
+    border-left: 3px dashed #e4f3ff;
+    filter: drop-shadow(0 0 4px rgba(255,255,255,.4));
+}
+
+.signal {
+    border: 1px solid rgba(255, 255, 255, .07);
+    background: rgba(255, 255, 255, .045);
+    transition: transform .2s ease, border-color .2s ease;
+}
+
+.signal:hover {
+    transform: translateY(-4px);
+    border-color: rgba(64, 224, 232, .35);
+}
+
+section {
+    scroll-margin-top: 90px;
+}
+
+.about {
+    background:
+        radial-gradient(ellipse at 90% 50%, rgba(45, 112, 160, .10), transparent 40%),
+        #091727;
+}
+
+.section-heading h2 {
+    letter-spacing: -.7px;
+}
+
+.principle {
+    border: 1px solid rgba(255, 255, 255, .055);
+    border-left: 3px solid var(--cyan);
+    background: linear-gradient(110deg, #102238, #0c1b2d);
+    transition: transform .2s ease, border-color .2s ease;
+}
+
+.principle:hover {
+    transform: translateX(5px);
+    border-color: rgba(64, 224, 232, .35);
+}
+
+.technology {
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(48, 105, 160, .10), transparent 48%),
+        var(--bg);
+}
+
+.technology .feature {
+    position: relative;
+    overflow: hidden;
+    min-height: 205px;
+    padding: 28px;
+    background: linear-gradient(145deg, #11243a, #0b192a);
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+.technology .feature::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 45px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--cyan), transparent);
+}
+
+.technology .feature:hover {
+    transform: translateY(-7px);
+    border-color: rgba(64, 224, 232, .4);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, .22);
+}
+
+.feature .number {
+    color: var(--cyan);
+    letter-spacing: 1.3px;
+}
+
+.feature h3 {
+    color: #f3f8ff;
+}
+
+.feature p {
+    line-height: 1.75;
+}
+
+.platform {
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(53, 213, 232, .15), transparent 60%),
+        linear-gradient(180deg, #0b1929, #081523);
+}
+
+.platform h2 {
+    letter-spacing: -.8px;
+}
+
+.notice {
+    padding: 13px 18px;
+    display: inline-block;
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .035);
+    line-height: 1.7;
+}
+
+footer {
+    background: #050e19;
+}
+
+@media (max-width: 850px) {
+    .hero {
+        min-height: auto;
+    }
+
+    .hero-grid {
+        gap: 38px;
+    }
+
+    .hero-visual {
+        max-width: 650px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        gap: 13px;
+    }
+
+    .brand {
+        font-size: 1.05rem;
+    }
+
+    .hero {
+        padding: 65px 0;
+    }
+
+    h1 {
+        font-size: clamp(2.4rem, 11vw, 3.5rem);
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .actions .btn {
+        width: 100%;
+    }
+
+    .hero-visual {
+        padding: 20px;
+    }
+
+    .signal-row {
+        gap: 7px;
+    }
+
+    .signal {
+        padding: 10px 7px;
+    }
+
+    .signal strong {
+        font-size: .88rem;
+    }
+
+    .signal small {
+        font-size: .72rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="container navbar">
+        <a class="brand" href="#home">SMART-PAVE <span>RWANDA</span></a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+            <a href="#home">Home</a>
+            <a href="about.html">About</a>
+            <a href="technology.html">Technology</a>
+            <a href="platform.html">Platform</a>
+        </nav>
+
+        <a class="nav-cta" href="platform.html">Engineering Workspace ↗</a>
+    </div>
+</header>
+
+<main>
+
+    <section class="hero" id="home">
+        <div class="container hero-grid">
+            <div>
+                <div class="eyebrow">Intelligent infrastructure technology</div>
+
+                <h1>
+                    Smarter Roads.<br>
+                    <span>Better Decisions.</span>
+                </h1>
+
+                <p>
+                    SMART-PAVE Rwanda is a developing smart pavement monitoring
+                    and analysis platform designed to connect traffic information,
+                    pavement engineering analysis and geospatial intelligence
+                    for more informed road infrastructure management.
+                </p>
+
+                <div class="actions">
+                    <a class="btn" href="platform.html">Explore Engineering Workspace</a>
+                    <a class="btn secondary" href="technology.html">Discover the Technology</a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="visual-label">SMART-PAVE | ENGINEERING CONCEPT</div>
+                <div class="road-visual"></div>
+
+                <div class="signal-row">
+                    <div class="signal">
+                        <strong>Traffic</strong>
+                        <small>Monitoring</small>
+                    </div>
+                    <div class="signal">
+                        <strong>Pavement</strong>
+                        <small>Analysis</small>
+                    </div>
+                    <div class="signal">
+                        <strong>GIS</strong>
+                        <small>Intelligence</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container about-grid">
+            <div class="about-copy">
+                <div class="eyebrow">About the project</div>
+                <div class="section-heading">
+                    <h2>Turning pavement information into engineering insight.</h2>
+                    <p>
+                        Road infrastructure needs reliable information about
+                        traffic loading, pavement behaviour and changing road
+                        conditions. SMART-PAVE aims to bring these areas together
+                        through an integrated digital engineering platform.
+                    </p>
+                </div>
+                <p>
+                    The project is being developed in Rwanda, with a focus on
+                    practical pavement monitoring, analytical tools and
+                    geospatial decision support.
+                </p>
+            </div>
+
+            <div class="principles">
+                <div class="principle">
+                    <strong>Monitor</strong>
+                    <small>Organise traffic and pavement measurement information.</small>
+                </div>
+                <div class="principle">
+                    <strong>Analyse</strong>
+                    <small>Explore pavement response, loading and deformation indicators.</small>
+                </div>
+                <div class="principle">
+                    <strong>Understand</strong>
+                    <small>Relate engineering information to road sections and locations.</small>
+                </div>
+                <div class="principle">
+                    <strong>Support decisions</strong>
+                    <small>Present information to help guide engineering investigation and planning.</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="technology" id="technology">
+        <div class="container">
+            <div class="section-heading">
+                <div class="eyebrow">Technology and capabilities</div>
+                <h2>An integrated approach to pavement intelligence.</h2>
+                <p>
+                    The platform brings together several engineering and
+                    information streams in one digital environment.
+                </p>
+            </div>
+
+            <div class="features">
+                <article class="feature">
+                    <div class="number">01 / TRAFFIC</div>
+                    <h3>Traffic Monitoring</h3>
+                    <p>
+                        Organise vehicle passage information, traffic counts
+                        and vehicle-class data for road analysis.
+                    </p>
+                </article>
+
+                <article class="feature">
+                    <div class="number">02 / LOADING</div>
+                    <h3>ESAL Analysis</h3>
+                    <p>
+                        Explore equivalent standard axle loading indicators
+                        to support pavement traffic assessment.
+                    </p>
+                </article>
+
+                <article class="feature">
+                    <div class="number">03 / STRUCTURAL</div>
+                    <h3>Pavement Response</h3>
+                    <p>
+                        Explore multilayer pavement response under applied
+                        loading using engineering analysis models.
+                    </p>
+                </article>
+
+                <article class="feature">
+                    <div class="number">04 / DEFORMATION</div>
+                    <h3>Deformation Analysis</h3>
+                    <p>
+                        Organise deflection, residual deformation and
+                        settlement measurements for trend analysis.
+                    </p>
+                </article>
+
+                <article class="feature">
+                    <div class="number">05 / GEOSPATIAL</div>
+                    <h3>GIS and Location Intelligence</h3>
+                    <p>
+                        Relate road sections, chainage and location information
+                        to pavement monitoring data.
+                    </p>
+                </article>
+
+                <article class="feature">
+                    <div class="number">06 / INSIGHT</div>
+                    <h3>Engineering Decision Support</h3>
+                    <p>
+                        Bring monitoring outputs and analytical indicators
+                        together to support engineering review.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="platform" id="platform">
+        <div class="container">
+            <div class="eyebrow">Explore the platform</div>
+            <h2>Enter the SMART-PAVE Engineering Workspace</h2>
+            <p>
+                Explore the developing dashboard, engineering analysis modules,
+                traffic information, pavement response tools and geospatial
+                monitoring interface.
+            </p>
+
+            <div class="actions" style="justify-content:center">
+                <a class="btn" href="platform.html">Open Engineering Workspace ↗</a>
+                <a class="btn secondary" href="technology.html">Explore API Documentation</a>
+            </div>
+
+            <div class="notice">
+                Development prototype. Some displayed measurements and model
+                outputs may be simulated and are not validated field results.
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container footer-row">
+        <span>© 2026 SMART-PAVE Rwanda. Project in development.</span>
+        <span>Smart Pavement Monitoring &amp; Analysis System</span>
+    </div>
+</footer>
+
+</body>
+</html>
+
+
+

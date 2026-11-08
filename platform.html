@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Explore the SMART-PAVE Rwanda engineering platform, workspace, research collaboration and partnership opportunities.">
+<meta name="theme-color" content="#07111f">
+<title>Platform | SMART-PAVE Rwanda</title>
+
+<style>
+:root {
+    --bg:#07111f;
+    --panel:#101e30;
+    --panel2:#14263a;
+    --text:#edf5ff;
+    --muted:#a8b8ca;
+    --cyan:#35d5e8;
+    --blue:#478bff;
+    --line:rgba(255,255,255,.11);
+}
+* {box-sizing:border-box;margin:0;padding:0}
+html {scroll-behavior:smooth}
+body {
+    background:var(--bg);
+    color:var(--text);
+    font-family:Inter,"Segoe UI",Arial,sans-serif;
+    line-height:1.7;
+}
+a {color:inherit;text-decoration:none}
+.container {width:min(1160px,90%);margin:auto}
+header {
+    position:sticky;top:0;z-index:10;
+    background:rgba(7,17,31,.94);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+}
+.navbar {
+    min-height:76px;display:flex;align-items:center;
+    justify-content:space-between;gap:24px;
+}
+.brand {font-size:20px;font-weight:800;letter-spacing:.5px}
+.brand span {color:var(--cyan)}
+.nav-links {display:flex;gap:25px;flex-wrap:wrap}
+.nav-links a {font-size:14px;color:var(--muted);transition:.2s}
+.nav-links a:hover,.nav-links a.active {color:var(--cyan)}
+.btn {
+    display:inline-flex;align-items:center;justify-content:center;
+    padding:12px 20px;border-radius:8px;
+    background:linear-gradient(100deg,var(--cyan),var(--blue));
+    color:#061321;font-weight:800;font-size:14px;
+    transition:transform .2s,filter .2s;
+}
+.btn:hover {transform:translateY(-2px);filter:brightness(1.08)}
+.btn.secondary {
+    background:var(--panel2);color:var(--text);
+    border:1px solid var(--line);
+}
+.hero {
+    padding:105px 0 90px;
+    background:
+      radial-gradient(ellipse at 85% 15%,rgba(53,213,232,.15),transparent 40%),
+      radial-gradient(ellipse at 10% 90%,rgba(71,139,255,.12),transparent 38%),
+      var(--bg);
+}
+.eyebrow {
+    color:var(--cyan);font-size:12px;font-weight:800;
+    letter-spacing:2px;text-transform:uppercase;margin-bottom:17px;
+}
+h1 {font-size:clamp(38px,6vw,66px);line-height:1.08;letter-spacing:-2px;max-width:850px}
+h1 span {color:var(--cyan)}
+.hero p {
+    color:var(--muted);font-size:18px;
+    max-width:740px;margin:25px 0 30px;
+}
+.actions {display:flex;gap:13px;flex-wrap:wrap}
+.section {padding:82px 0;border-top:1px solid var(--line)}
+.section-heading {max-width:760px;margin-bottom:38px}
+.section-heading h2 {font-size:clamp(28px,4vw,40px);line-height:1.2;letter-spacing:-1px}
+.section-heading p {color:var(--muted);margin-top:14px}
+.grid {display:grid;grid-template-columns:repeat(3,1fr);gap:19px}
+.card {
+    padding:27px;background:var(--panel);
+    border:1px solid var(--line);border-radius:13px;
+    min-height:210px;
+}
+.card .number {color:var(--cyan);font-size:12px;font-weight:800;letter-spacing:1.5px}
+.card h3 {font-size:19px;margin:15px 0 10px}
+.card p {color:var(--muted);font-size:14px}
+.workspace {
+    background:linear-gradient(135deg,#10283a,#10213a);
+    border:1px solid rgba(53,213,232,.22);
+    border-radius:16px;padding:42px;
+    display:grid;grid-template-columns:1.5fr 1fr;
+    gap:30px;align-items:center;
+}
+.workspace h2 {font-size:clamp(27px,4vw,38px);line-height:1.2}
+.workspace p {color:var(--muted);margin:15px 0 23px}
+.workspace-panel {
+    background:rgba(7,17,31,.65);
+    border:1px solid var(--line);border-radius:12px;padding:22px;
+}
+.status-line {
+    display:flex;justify-content:space-between;gap:10px;
+    padding:12px 0;border-bottom:1px solid var(--line);
+    font-size:13px;
+}
+.status-line:last-child {border:0}
+.status-line span:last-child {color:var(--cyan)}
+.collaboration {
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:15px;padding:36px;
+}
+.collaboration h2 {font-size:clamp(27px,4vw,38px);line-height:1.2}
+.collaboration p {color:var(--muted);margin:15px 0}
+.collaboration ul {padding-left:21px;color:var(--muted);margin:18px 0}
+.collaboration li {padding:5px 0}
+.contact-note {
+    margin-top:22px;padding:17px 20px;
+    border-left:3px solid var(--cyan);
+    background:rgba(53,213,232,.06);
+    color:var(--muted);font-size:14px;
+}
+footer {border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:13px}
+.footer-inner {display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+@media(max-width:850px) {
+    .navbar {padding:15px 0;align-items:flex-start;flex-direction:column}
+    .nav-links {gap:16px}
+    .nav-cta {display:none}
+    .grid {grid-template-columns:repeat(2,1fr)}
+    .workspace {grid-template-columns:1fr}
+}
+@media(max-width:560px) {
+    .hero {padding:75px 0}
+    .grid {grid-template-columns:1fr}
+    .workspace,.collaboration {padding:25px}
+    .nav-links {gap:12px}
+    .nav-links a {font-size:13px}
+}
+</style>
+</head>
+
+<body>
+<header>
+ <div class="container navbar">
+  <a class="brand" href="index.html">SMART-PAVE <span>RWANDA</span></a>
+  <nav class="nav-links" aria-label="Main navigation">
+   <a href="index.html">Home</a>
+   <a href="about.html">About</a>
+   <a href="technology.html">Technology</a>
+   <a class="active" href="platform.html">Platform</a>
+  </nav>
+  <a class="btn nav-cta" href="platform.html">Engineering Workspace ↗</a>
+ </div>
+</header>
+
+<main>
+<section class="hero">
+ <div class="container">
+  <div class="eyebrow">The SMART-PAVE digital environment</div>
+  <h1>From pavement data to <span>engineering decisions.</span></h1>
+  <p>
+   SMART-PAVE Rwanda is developing an integrated engineering platform
+   that brings traffic intelligence, pavement response analysis,
+   deformation monitoring and geospatial information into one digital environment.
+  </p>
+  <div class="actions">
+   <a class="btn" href="platform.html">Explore Engineering Workspace ↗</a>
+   <a class="btn secondary" href="technology.html">Explore Technology</a>
+  </div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="container">
+  <div class="section-heading">
+   <div class="eyebrow">Platform capabilities</div>
+   <h2>An integrated environment for pavement intelligence.</h2>
+   <p>
+    The platform is being developed around connected engineering
+    capabilities that help organize information, analyse pavement
+    behaviour and support infrastructure monitoring.
+   </p>
+  </div>
+
+  <div class="grid">
+   <article class="card">
+    <div class="number">01 / TRAFFIC</div>
+    <h3>Traffic Intelligence</h3>
+    <p>Organize vehicle passage information, traffic counts, vehicle classes, AADT and provisional ESAL analysis.</p>
+   </article>
+   <article class="card">
+    <div class="number">02 / PAVEMENT</div>
+    <h3>Pavement Response</h3>
+    <p>Explore multilayer pavement response calculations and engineering indicators under defined loading assumptions.</p>
+   </article>
+   <article class="card">
+    <div class="number">03 / DEFORMATION</div>
+    <h3>Deformation Monitoring</h3>
+    <p>Organize deflection, residual deformation and settlement measurements for comparison over time.</p>
+   </article>
+   <article class="card">
+    <div class="number">04 / GEOINTELLIGENCE</div>
+    <h3>Geospatial Monitoring</h3>
+    <p>Connect road sections, chainage and geographic coordinates with engineering observations.</p>
+   </article>
+   <article class="card">
+    <div class="number">05 / ANALYTICS</div>
+    <h3>Data Analysis</h3>
+    <p>Bring traffic and pavement information together to explore trends, indicators and possible maintenance priorities.</p>
+   </article>
+   <article class="card">
+    <div class="number">06 / DECISION SUPPORT</div>
+    <h3>Engineering Insights</h3>
+    <p>Present organized information through dashboards and reports to support engineering review and investigation.</p>
+   </article>
+  </div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="container">
+  <div class="workspace">
+   <div>
+    <div class="eyebrow">Engineering workspace</div>
+    <h2>Explore the developing SMART-PAVE system.</h2>
+    <p>
+     Access the current engineering dashboard and explore the
+     available monitoring and analysis modules. The workspace
+     is under active development.
+    </p>
+    <div class="actions">
+     <a class="btn" href="platform.html">Open Engineering Workspace ↗</a>
+     <a class="btn secondary" href="technology.html">API Documentation</a>
+    </div>
+   </div>
+   <div class="workspace-panel">
+    <div class="status-line"><span>Traffic intelligence</span><span>In development</span></div>
+    <div class="status-line"><span>Pavement response</span><span>Prototype</span></div>
+    <div class="status-line"><span>Deformation analysis</span><span>Prototype</span></div>
+    <div class="status-line"><span>Geospatial monitoring</span><span>In development</span></div>
+    <div class="status-line"><span>Field sensor integration</span><span>Future phase</span></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="collaboration">
+ <div class="container">
+  <div class="collaboration">
+   <div class="eyebrow">Research · Collaboration · Partnerships</div>
+   <h2>Help shape smarter pavement monitoring.</h2>
+   <p>
+    SMART-PAVE welcomes opportunities to engage with people and
+    organizations interested in pavement engineering, transportation
+    infrastructure, monitoring technologies and applied research.
+   </p>
+   <ul>
+    <li>Universities, lecturers and academic researchers.</li>
+    <li>Highway engineers and road infrastructure institutions.</li>
+    <li>Technology developers and sensor engineering teams.</li>
+    <li>Research partners, innovation programmes and potential investors.</li>
+   </ul>
+   <div class="contact-note">
+    <strong>Contact information:</strong> Official public contact details
+    are not yet available. This page will be updated when an official
+    SMART-PAVE project contact channel is established.
+   </div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="container footer-inner">
+  <span><strong>SMART-PAVE RWANDA</strong> · Intelligent Pavement Monitoring</span>
+  <span>Engineering innovation for smarter road infrastructure.</span>
+ </div>
+</footer>
+</body>
+</html>
